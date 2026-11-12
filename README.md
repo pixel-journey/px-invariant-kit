@@ -7,7 +7,7 @@ One repo for the small checks that do not deserve their own repository, plus **w
 
 A new pure gate or small helper lands **here** under `src/`, then gets exercised by a flow under `flows/`. Do not open `px-<one-check>` for it.
 
-**Real code:** `npm test` (**6 tests**, two flows). **Not** wasm. **Not** chain signature verification.
+**Real code:** `npm test` (**9 tests**, three flows). **Not** wasm. **Not** chain signature verification.
 
 ---
 
@@ -15,7 +15,7 @@ A new pure gate or small helper lands **here** under `src/`, then gets exercised
 
 A name check alone is a remark. A claim that needs a valid name, matching auth, PXJ at precision 8, a one-shot latch, a cooldown, **and** overflow-safe add is a lesson.
 
-Same idea for the drop flow: allowlist + time window + unique batch + seen-ids + claim cap + fee bps + config version. The seams are where contracts fail.
+Same idea for the drop and sequenced flows: the seams are where contracts fail — including **check order** (a failed cooldown must not burn a nonce).
 
 ---
 
@@ -46,24 +46,15 @@ Same idea for the drop flow: allowlist + time window + unique batch + seen-ids +
 | --- | --- |
 | `claim.ts` | name, auth, quantity, latch, cooldown, safe add |
 | `gated-drop.ts` | allowlist, window, batch, seen, counter, bps, config version |
+| `sequenced-action.ts` | allowlist, window, **cooldown before nonce**, nonce |
 
 ```bash
 npm test
 ```
 
-## Official sources (read these)
+## Official sources
 
-| Topic | Source |
-| --- | --- |
-| WAX developer docs | [docs.wax.io](https://docs.wax.io/) |
-| Antelope / Leap | [docs.eosnetwork.com](https://docs.eosnetwork.com/) |
-| CDT (C++ toolchain) | [AntelopeIO/cdt](https://github.com/AntelopeIO/cdt) |
-| `name` type / account names | [Antelope developer docs — name](https://docs.eosnetwork.com/docs/latest/smart-contracts/name) |
-| AtomicAssets contract | [pinknetworkx/atomicassets-contract](https://github.com/pinknetworkx/atomicassets-contract) |
-| AtomicAssets API / guides | [docs.atomicassets.io](https://docs.atomicassets.io/) (community docs; verify against the contract) |
-| eosio.token / asset shape | [eosio.contracts](https://github.com/eosio/eosio.contracts) (reference pattern for quantity) |
-
-This kit is TypeScript education. On-chain behaviour is defined by the CDT host and the live contracts above, not by these tests.
+See [SOURCES.md](SOURCES.md). Primary anchors: [docs.wax.io](https://docs.wax.io/), [docs.eosnetwork.com](https://docs.eosnetwork.com/), [AtomicAssets contract](https://github.com/pinknetworkx/atomicassets-contract), [CDT](https://github.com/AntelopeIO/cdt).
 
 ## Frozen micro-repos
 
@@ -71,4 +62,4 @@ See [MAP.md](MAP.md). History only. Do not extend them.
 
 ## Not done
 
-No wasm. `requireAuth` compares strings. Domain subjects (blends, orng, staking, full token ledger, AtomicAssets setassetdata) stay in their own **domain** repos — those are the ~200-quality targets, not more one-check shells.
+No wasm. `requireAuth` compares strings. Domain subjects stay in domain repos.

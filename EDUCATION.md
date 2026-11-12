@@ -2,7 +2,7 @@
 
 ## The failure mode we are fixing
 
-A single `assert` in its own repository teaches the check and hides the composition. Real actions fail at the seams: the name check and the auth check disagree, the quantity allows WAX while the action wanted PXJ, the latch and the cooldown both have to trip or a retry pays twice, the allowlist is open but the window is closed, the batch is unique but one id was already seen, the fee uses the wrong config version.
+A single `assert` in its own repository teaches the check and hides the composition. Real actions fail at the seams: the name check and the auth check disagree, the quantity allows WAX while the action wanted PXJ, the latch and the cooldown both have to trip or a retry pays twice, the allowlist is open but the window is closed, the batch is unique but one id was already seen, the fee uses the wrong config version — or a **failed cooldown still advances a nonce** because writes ran too early.
 
 ## Flow 1 — `claim`
 
@@ -23,6 +23,16 @@ A single `assert` in its own repository teaches the check and hides the composit
 6. Global claim counter has a hard cap.
 7. Fee is floor(stake * bps / 10000).
 8. Client must pass the current config version after an admin bump.
+
+## Flow 3 — `sequenced-action`
+
+1. Allowlist + time window first (pure membership and time).
+2. **Cooldown is checked before the nonce is consumed** so "too soon" does not burn the sequence number.
+3. Nonce must be exactly the expected value (no skip, no replay).
+4. Cooldown is recorded only after the nonce succeeds.
+5. Accounts keep independent nonce and cooldown rows.
+
+This is the lesson about **gate order**: pure checks before state writes; among writes, prefer not to advance one resource if a later gate will fail.
 
 ## What to read next
 
