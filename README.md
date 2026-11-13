@@ -12,16 +12,19 @@
 
 | Doc | Role |
 | --- | --- |
+| [MODULES.md](MODULES.md) | Every gate, one table |
 | [EDUCATION.md](EDUCATION.md) | Why composition matters |
 | [WORKED-EXAMPLES.md](WORKED-EXAMPLES.md) | claim / drop / sequenced |
 | [TIPS.md](TIPS.md) | Where new gates land |
-| [MAP.md](MAP.md) | Frozen micro-repos |
+| [MAP.md](MAP.md) | Frozen micro-repos (do not extend) |
 | [SECURITY.md](SECURITY.md) | Limits of string auth |
 | [SOURCES.md](SOURCES.md) | Official anchors |
 
 ## Modules (`src/`)
 
 name · auth · math · quantity (**PXJ@8**) · range · hex · latch · cooldown · nonce · allowlist · window · seen · batch · counter · bps · version
+
+Full rule per file: [MODULES.md](MODULES.md).
 
 ## Flows (`flows/`)
 
