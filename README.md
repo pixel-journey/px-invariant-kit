@@ -1,65 +1,38 @@
-# px-invariant-kit
+# Shared contract gates and composition flows
 
-> **Trust:** private educational kit (Tier B)
+> **Domain:** reusable Antelope/WAX invariants  
+> **Sources:** [SOURCES.md](SOURCES.md)  
 > **Vault:** [px-contract-examples-vault](https://github.com/pixel-journey/px-contract-examples-vault)
 
-One repo for the small checks that do not deserve their own repository, plus **worked flows** that compose them the way a real action does.
+**Goal:** One kit for small checks that should not be solo repos, plus **worked flows** that compose them the way a real action does — including **gate order** (cooldown before nonce).
 
-A new pure gate or small helper lands **here** under `src/`, then gets exercised by a flow under `flows/`. Do not open `px-<one-check>` for it.
+**Code under test:** `npm test` (**9 tests**, three flows). Not wasm. Auth is string equality only.
 
-**Real code:** `npm test` (**9 tests**, three flows). **Not** wasm. **Not** chain signature verification.
+## Learning materials
 
----
-
-## Why this exists
-
-A name check alone is a remark. A claim that needs a valid name, matching auth, PXJ at precision 8, a one-shot latch, a cooldown, **and** overflow-safe add is a lesson.
-
-Same idea for the drop and sequenced flows: the seams are where contracts fail — including **check order** (a failed cooldown must not burn a nonce).
-
----
+| Doc | Role |
+| --- | --- |
+| [EDUCATION.md](EDUCATION.md) | Why composition matters |
+| [WORKED-EXAMPLES.md](WORKED-EXAMPLES.md) | claim / drop / sequenced |
+| [TIPS.md](TIPS.md) | Where new gates land |
+| [MAP.md](MAP.md) | Frozen micro-repos |
+| [SECURITY.md](SECURITY.md) | Limits of string auth |
+| [SOURCES.md](SOURCES.md) | Official anchors |
 
 ## Modules (`src/`)
 
-| Module | Check |
-| --- | --- |
-| `name.ts` | Antelope name, `a-z1-5`, length 1..12 |
-| `auth.ts` | Caller string equals expected account |
-| `math.ts` | uint64 add/sub; overflow and underflow refused |
-| `quantity.ts` | Asset amount, symbol, precision; **PXJ locked to 8** |
-| `range.ts` | Closed integer range |
-| `hex.ts` | Lowercase even-length hex |
-| `latch.ts` | One-shot flag |
-| `cooldown.ts` | Per-account unix cooldown |
-| `nonce.ts` | Monotonic per-account replay nonce |
-| `allowlist.ts` | Admin grant/revoke; admin not implied member |
-| `window.ts` | Absolute `[start, end)` unix window |
-| `seen.ts` | Order-independent seen-id set |
-| `batch.ts` | Unique positive ids, length 1..20 |
-| `counter.ts` | Capped counter |
-| `bps.ts` | 0..10000 inclusive; floor apply |
-| `version.ts` | Monotonic config version |
+name · auth · math · quantity (**PXJ@8**) · range · hex · latch · cooldown · nonce · allowlist · window · seen · batch · counter · bps · version
 
 ## Flows (`flows/`)
 
-| Flow | Composes |
+| Flow | Lesson |
 | --- | --- |
-| `claim.ts` | name, auth, quantity, latch, cooldown, safe add |
-| `gated-drop.ts` | allowlist, window, batch, seen, counter, bps, config version |
-| `sequenced-action.ts` | allowlist, window, **cooldown before nonce**, nonce |
+| `claim` | name + auth + PXJ + latch + cooldown + safe add |
+| `gated-drop` | allowlist + window + batch + seen + cap + bps + config version |
+| `sequenced-action` | cooldown checked **before** nonce consume |
 
 ```bash
 npm test
 ```
 
-## Official sources
-
-See [SOURCES.md](SOURCES.md). Primary anchors: [docs.wax.io](https://docs.wax.io/), [docs.eosnetwork.com](https://docs.eosnetwork.com/), [AtomicAssets contract](https://github.com/pinknetworkx/atomicassets-contract), [CDT](https://github.com/AntelopeIO/cdt).
-
-## Frozen micro-repos
-
-See [MAP.md](MAP.md). History only. Do not extend them.
-
-## Not done
-
-No wasm. `requireAuth` compares strings. Domain subjects stay in domain repos.
+MIT — Pixel Journey
