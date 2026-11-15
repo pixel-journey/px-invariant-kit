@@ -4,6 +4,8 @@
 
 A single `assert` in its own repository teaches the check and hides the composition. Real actions fail at the seams: the name check and the auth check disagree, the quantity allows WAX while the action wanted PXJ, the latch and the cooldown both have to trip or a retry pays twice, the allowlist is open but the window is closed, the batch is unique but one id was already seen, the fee uses the wrong config version — or a **failed cooldown still advances a nonce** because writes ran too early.
 
+Module list: [MODULES.md](MODULES.md). Worked numbers: [WORKED-EXAMPLES.md](WORKED-EXAMPLES.md).
+
 ## Flow 1 — `claim`
 
 1. Beneficiary must be a valid Antelope name.
@@ -34,6 +36,14 @@ A single `assert` in its own repository teaches the check and hides the composit
 
 This is the lesson about **gate order**: pure checks before state writes; among writes, prefer not to advance one resource if a later gate will fail.
 
+## Exercises
+
+1. In `sequenced-action`, show a cooldown miss leaves the expected nonce unchanged. That is the test that justifies this repository.
+2. Explain why string `auth.ts` is not Antelope `require_auth` ([SECURITY.md](SECURITY.md)).
+3. Show a PXJ quantity at precision 4 is refused, and a non-PXJ symbol is refused.
+4. Grant yourself as admin on the allowlist and show you still cannot claim until you are explicitly added.
+5. Add a new gate as `src/<name>.ts` plus one assertion inside an existing flow. Do not open a repository.
+
 ## What to read next
 
-Official links live in [SOURCES.md](SOURCES.md). Domain labs (AtomicAssets mutable stack, orng, blends) are separate repositories because they are whole subjects, not single checks.
+Official links live in [SOURCES.md](SOURCES.md). Domain labs (AtomicAssets mutable stack, orng, blends, treasury) are separate repositories because they are whole subjects, not single checks. Study order: [learning path](https://github.com/pixel-journey/px-contract-examples-vault/blob/main/docs/LEARNING-PATH.md).

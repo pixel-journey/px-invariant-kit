@@ -1,6 +1,8 @@
 # Map of frozen one-check repos
 
-These private repos were **one check each**. **Do not extend them.** Their READMEs redirect here. New work goes in this kit under `src/` + a `flows/` exercise.
+These private repos were **one check each**. **Do not extend them.** Their READMEs redirect here. New work goes in this kit under `src/` + a `flows/` exercise. Catalog of the rules: [MODULES.md](MODULES.md).
+
+Vault policy (why they were not deleted the same day): [FREEZE.md](https://github.com/pixel-journey/px-contract-examples-vault/blob/main/docs/FREEZE.md). Original test inventory: [FROZEN-APPENDIX.md](https://github.com/pixel-journey/px-contract-examples-vault/blob/main/docs/FROZEN-APPENDIX.md).
 
 | Frozen repo | Module in this kit |
 | --- | --- |
@@ -22,5 +24,7 @@ These private repos were **one check each**. **Do not extend them.** Their READM
 | [px-config-version](https://github.com/pixel-journey/px-config-version) | `src/version.ts` |
 
 All modules above are present. Future checks of the same size are **new files under `src/` plus a flow** — never a new repository.
+
+Name rules here are stricter than some frozen repos (no `.` on cooldown, nonce, and allowlist). **This kit wins.**
 
 Composition lessons: [WORKED-EXAMPLES.md](WORKED-EXAMPLES.md).
