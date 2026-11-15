@@ -1,6 +1,8 @@
-# Tips — shared gates
+# Tips
 
-- Put new pure helpers in `src/` and exercise them from a `flows/` story.
-- **Do not** open `px-<one-check>` for a single assert (see [MAP.md](MAP.md)).
-- Gate order: pure checks before writes; among writes, avoid burning a nonce if cooldown will fail.
-- Domain subjects (AtomicAssets, orng, blends) stay in domain repos.
+- New gate → `src/<name>.ts` + one flow assertion. Never a new org repo for one check.
+- Prefer pure checks (name, window, allowlist) before state writes (nonce, seen, latch).
+- Among writes, order so a failure cannot leave half-advanced resources (cooldown before nonce).
+- PXJ is always precision 8 in this org; the quantity module encodes that.
+- Name charset here is strict (`a-z1-5` without `.`). If an older frozen micro allowed `.`, the kit wins for new work.
+- `npm test` runs all three flows (9 tests).
