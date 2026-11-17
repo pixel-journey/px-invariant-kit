@@ -1,34 +1,11 @@
-# Official and primary sources
+# Sources
 
-Prefer these over secondary blog posts when a claim about chain behaviour matters.
-
-## WAX
-
-- [docs.wax.io](https://docs.wax.io/) — WAX developer documentation (accounts, actions, resources, guides).
-- [WAX GitHub org](https://github.com/worldwide-asset-exchange) — system contracts and tooling mirrors used by the network.
-
-## Antelope (protocol layer)
-
-- [docs.eosnetwork.com](https://docs.eosnetwork.com/) — protocol, smart contract model, `name`, permissions.
-- [AntelopeIO/cdt](https://github.com/AntelopeIO/cdt) — C++ contract development toolkit (compile to wasm).
-- [AntelopeIO/leap](https://github.com/AntelopeIO/leap) — node software.
-
-## AtomicAssets
-
-- [pinknetworkx/atomicassets-contract](https://github.com/pinknetworkx/atomicassets-contract) — **source of truth** for collection, schema, template, asset, and `setassetdata`.
-- Community API docs (cross-check against the contract): [docs.atomicassets.io](https://docs.atomicassets.io/).
-
-## Tokens / quantity shape
-
-- Reference token patterns in historical [eosio.contracts](https://github.com/eosio/eosio.contracts) (`eosio.token` asset + symbol layout). WAX mainnet token contracts follow the same asset encoding ideas; always verify the live ABI.
-
-## How this kit uses them
-
-| Kit idea | Grounded in |
+| Source | Use |
 | --- | --- |
-| Account name charset / length | Antelope `name` rules |
-| PXJ precision 8 | Project token policy (Pixel Journey); quantity encoding follows eosio-style asset |
-| Time as unix seconds | `time_point_sec` / chain `now()` patterns in CDT contracts |
-| Allowlist / auth patterns | `require_auth` / permission model in Antelope docs — **this kit only models the branch** |
+| [docs.wax.io](https://docs.wax.io/) | WAX / Antelope actions |
+| [docs.eosnetwork.com](https://docs.eosnetwork.com/) | require_auth, time, names |
+| [eosio.token](https://github.com/eosio/eosio.contracts) | Quantity / transfer patterns |
 
-If a flow claims something stronger than the links above support, treat that as a bug in the flow, not as chain truth.
+Domain labs still own full subjects: AtomicAssets mutable stack, orng, blends, treasury. This kit is **shared gates only**.
+
+Related: [memo router](https://github.com/pixel-journey/px-memo-action-router) · [pausable](https://github.com/pixel-journey/px-token-pausable-emergency-guard) · [token ledger](https://github.com/pixel-journey/px-token-balance-ledger)
