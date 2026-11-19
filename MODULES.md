@@ -31,6 +31,6 @@ Auth in this kit is **string equality**, not a chain signature. Amounts that can
 
 ## Frozen duplicates
 
-Sixteen older repos still contain the same ideas in isolation. They are history. Map: [MAP.md](MAP.md). Policy: [FREEZE.md](https://github.com/pixel-journey/px-contract-examples-vault/blob/main/docs/FREEZE.md).
+Sixteen older repos still contain the same ideas in isolation. They are history. Map: [MAP.md](MAP.md). Policy: `px-contract-examples-vault` (private; not this public course).
 
 Name rules in this kit are **stricter** than some of those repos (no `.` in names for cooldown, nonce, and allowlist). If they disagree, **this kit wins** for new work.

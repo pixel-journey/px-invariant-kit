@@ -40,4 +40,4 @@ npm test   # all three flows
 
 ## Related reading
 
-[MODULES.md](MODULES.md) · [WORKED-EXAMPLES.md](WORKED-EXAMPLES.md) · [MAP.md](MAP.md) · [LEARNING-PATH](https://github.com/pixel-journey/px-contract-examples-vault/blob/main/docs/LEARNING-PATH.md)
+[MODULES.md](MODULES.md) · [WORKED-EXAMPLES.md](WORKED-EXAMPLES.md) · [MAP.md](MAP.md) · `px-contract-examples-vault` (private; not this public course)

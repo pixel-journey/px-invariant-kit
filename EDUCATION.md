@@ -105,4 +105,4 @@ Domain subjects stay in their labs: AtomicAssets mutable stack, orng, blends, tr
 
 ## What to read next
 
-[SOURCES.md](SOURCES.md) · [learning path](https://github.com/pixel-journey/px-contract-examples-vault/blob/main/docs/LEARNING-PATH.md) · [COMMON-MISTAKES](https://github.com/pixel-journey/px-contract-examples-vault/blob/main/COMMON-MISTAKES.md).
+[SOURCES.md](SOURCES.md) · `px-contract-examples-vault` (private; not this public course) · `px-contract-examples-vault` (private; not this public course).

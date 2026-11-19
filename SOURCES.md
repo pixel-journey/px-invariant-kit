@@ -24,4 +24,4 @@ Map of modules: [MODULES.md](https://github.com/pixel-journey/px-invariant-kit/b
 | [memo router](https://github.com/pixel-journey/px-memo-action-router) | Grammar, not auth |
 | [pausable](https://github.com/pixel-journey/px-token-pausable-emergency-guard) | msig unpause |
 | [token ledger](https://github.com/pixel-journey/px-token-balance-ledger) | Conservation |
-| [HOW-TO-ADD](https://github.com/pixel-journey/px-contract-examples-vault/blob/main/HOW-TO-ADD.md) | Where a new check goes |
+| `px-contract-examples-vault` (private; not this public course) | Where a new check goes |

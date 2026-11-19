@@ -2,7 +2,7 @@
 
 > **Domain:** reusable Antelope/WAX invariants  
 > **Sources:** [SOURCES.md](SOURCES.md)  
-> **Vault:** [px-contract-examples-vault](https://github.com/pixel-journey/px-contract-examples-vault)
+> **Vault:** the private index `px-contract-examples-vault` (private; not this public course) is not the course. This repository is.
 
 One kit for small checks that must not be solo repos, plus **worked flows** that compose them the way a real action does — including **gate order** (cooldown before nonce).
 

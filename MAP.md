@@ -1,6 +1,6 @@
 # Map of frozen one-check repos
 
-These private repos were **one check each**. **Do not extend them.** Their READMEs redirect here. New work goes in this kit under `src/` + a `flows/` exercise. Catalog of the rules: [MODULES.md](MODULES.md).
+These one-check repos stay **private on purpose**. A public visitor who opens one of the links below will get a 404. That is the policy, not a missing file. The code you should read is the module in **this** repository. Do not ask for those repos to be opened, and do not recreate them.
 
 Vault policy (why they were not deleted the same day): [FREEZE.md](https://github.com/pixel-journey/px-contract-examples-vault/blob/main/docs/FREEZE.md). Original test inventory: [FROZEN-APPENDIX.md](https://github.com/pixel-journey/px-contract-examples-vault/blob/main/docs/FROZEN-APPENDIX.md).
 
