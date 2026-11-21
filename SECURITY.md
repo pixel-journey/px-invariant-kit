@@ -5,7 +5,7 @@
 | Issue | Kit mitigation |
 | --- | --- |
 | Wrong caller string | Equality after the name gate |
-| PXJ at the wrong precision | Refused (always 8) |
+| PXJ at the wrong precision | Refused (always **8**) |
 | Double claim (flow 1) | Latch |
 | Rapid retry if latch cleared | Cooldown |
 | Wrapped balance | `addU64` |
@@ -15,7 +15,7 @@
 | Duplicate ids in one tx | Batch uniqueness |
 | Unlimited claims | Cap counter |
 | Client on old fee rules | Config version |
-| Cooldown miss burns nonce | **Sequenced flow:** cooldown checked before nonce |
+| Cooldown miss burns nonce | **Sequenced flow:** cooldown checked **before** nonce |
 
 ## Not closed (production)
 
@@ -29,10 +29,11 @@
 
 ## Attack angles the composition teaches
 
-1. Advancing nonce then failing cooldown (sequence burned) — prevented in `sequenced-action`.
-2. Treating admin as already allowlisted without a grant.
-3. End-inclusive windows when the kit uses half-open `[start, end)`.
-4. Opening `px-my-new-assert` instead of adding a module ([MAP.md](MAP.md)).
+1. Advancing nonce then failing cooldown (sequence burned) — prevented in `sequenced-action`.  
+2. Treating admin as already allowlisted without a grant.  
+3. End-inclusive windows when the kit uses half-open `[start, end)`.  
+4. Opening `px-my-new-assert` instead of adding a module ([MAP.md](MAP.md)).  
+5. Mixing kit-strict names with domain labs that allow mid-name dots without a test.
 
 ## Honesty limits
 
@@ -41,3 +42,5 @@ This does not prove a signature, a table row, a token transfer, or an AtomicAsse
 ```bash
 npm test   # three flows, nine tests
 ```
+
+[docs.wax.io](https://docs.wax.io/).
